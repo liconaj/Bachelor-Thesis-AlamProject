@@ -1,0 +1,15 @@
+Gildes
+Josué
+Licona
+Mármol
+Camargo
+Leyva
+Gough
+Gough-Stewart
+Cosserat
+CRs
+PCRs
+DoFs
+Levenberg-Marquardt
+TMTDyn
+ChainQueen

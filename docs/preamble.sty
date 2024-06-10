@@ -1,0 +1,47 @@
+\ProvidesPackage{preamble}
+
+\usepackage[]{import}
+
+% margins
+\usepackage[margin=3cm]{geometry}
+\overfullrule=2mm % highlight overfull in generated document
+\setlength{\emergencystretch}{3em} % avoid overfull
+
+% font
+%\usepackage{libertine}
+%\usepackage{biolinum}
+%\usepackage{XCharter}
+\usepackage{newpxtext, newpxmath}
+%\usepackage[libertine,cmintegrals,cmbraces,vvarbb]{newtxmath}
+
+% line spacing
+\usepackage[onehalfspacing]{setspace}
+
+% images
+\usepackage{graphicx}
+\graphicspath{{./images}}
+
+% navigation, toc, hyperlinks
+\usepackage{bookmark} % this also loads hidelinks
+%\usepackage[hidelinks]{hyperref}
+\usepackage{hypcap} % achor links to the images, not the caption
+\hypersetup{
+    pdftitle={Design of a Portable Control Platform for Rod-Driven Continuum Parallalel Robots},
+    pdfsubject={Graduation Project},
+    bookmarksnumbered=true,
+    bookmarksopen=true,
+    bookmarksopenlevel=1,
+    colorlinks=false,
+    linktoc=all,
+    hidelinks % remove border and color
+}
+
+% references
+\usepackage[backend=biber]{biblatex}
+\addbibresource{bibliography.bib}
+
+% addbookmark
+\newcommand{\addbookmark}[2]{
+    \hypertarget{#1}{} % Set hypertarget
+    \bookmark[dest=#1,level=chapter]{#2} % Add bookmark
+}

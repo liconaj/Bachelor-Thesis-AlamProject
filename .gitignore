@@ -1,1 +1,16 @@
+# python
 venv
+
+# latex
+*.fdb_latexmk
+*.aux
+*.fls
+*.log
+*.lot
+*.lof
+*.toc
+*.synctex.gz
+*.bbl
+*.bbl-SAVE-ERROR
+*.bcf
+*.run.xml

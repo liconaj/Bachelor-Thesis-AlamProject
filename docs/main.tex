@@ -1,0 +1,46 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage{preamble}
+
+\begin{document}
+
+\import{}{title}
+
+% dedication
+\include{sections/dedication}
+\normalsize
+
+% abstract
+\chapter*{Abstract}
+\import{sections/}{abstract}
+
+% acknowledgements
+\chapter*{Acknowledgements}
+\import{sections/}{acknowledgements}
+
+% table of contents
+\tableofcontents
+
+% list of figures
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{\listfigurename}
+\listoffigures
+
+% list of tables
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{\listtablename}
+\listoftables
+
+% chapters
+
+\chapter{Introduction}
+\import{sections/}{introduction}
+
+% references
+\nocite{*}  % show all references
+\printbibliography[
+    heading=bibintoc,
+    title={Bibliography}]
+
+\end{document}j

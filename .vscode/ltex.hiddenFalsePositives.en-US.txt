@@ -1,0 +1,8 @@
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\Qtitlepage [dest=titlepage,level=chapter]Title Page\\E$"}
+{"rule":"COMMA_PARENTHESIS_WHITESPACE","sentence":"^\\Qtitlepage [dest=titlepage,level=chapter]Title Page\\E$"}
+{"rule":"AS_FOLLOW","sentence":"^\\QThen, modeling and control approaches are compared, and navigation strategies exclusive to continuum robots, such as follow the leader, coiling, and circumnutation are examined.\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QThen, modeling and control approaches are compared, and navigation strategies exclusive to continuum robots, such as follow the leader, coiling, and circumnutation are examined.\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QWe implement these models in a Matlab software package, named TMTDyn, to develop a modeling tool for hybrid rigid–continuum systems.\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QThe package features a new high-level language (HLL) text-based interface, a CAD-file import module, automatic formation of the system equation of motion (EOM) for different modeling and control tasks, implementing Matlab C-mex functionality for improved performance, and modules for static and linear modal analysis of a hybrid system.\\E$"}
+{"rule":"SMALL_NUMBER_OF","sentence":"^\\QA comparison shows higher simulation accuracy (8–14% normalized error) and numerical robustness of the ROM model for a system with a small number of states, and computational efficiency of the EBA model with near real-time performances that makes it suitable for large systems.\\E$"}
+{"rule":"LARGE_NUMBER_OF","sentence":"^\\QThe challenges and necessary modules to further automate the design and analysis of hybrid systems with a large number of states are briefly discussed.\\E$"}
