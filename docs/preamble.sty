@@ -48,9 +48,9 @@
 \addbibresource{bibliography.bib}
 
 % add a bookmark
-\newcommand{\addbookmark}[2]{
+\newcommand{\addbookmark}[1]{
     \cleardoublepage
-    \pdfbookmark[chapter]{#1}{#2}
+    \pdfbookmark[chapter]{#1}{\lowercase{#1}}
 }
 
 % add chapter to Contents and bookmarks
@@ -61,8 +61,8 @@
 }
 
 % create a chapter and add to bookmarls
-\newcommand{\phantomchapter}[2]{
-    \addbookmark{#1}{#2}
+\newcommand{\phantomchapter}[1]{
+    \addbookmark{#1}
     \chapter*{#1}
 }
 
