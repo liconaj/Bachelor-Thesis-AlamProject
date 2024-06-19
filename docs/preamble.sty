@@ -8,18 +8,25 @@
 \setlength{\emergencystretch}{3em} % avoid overfull
 
 % font
-%\usepackage{libertine}
 %\usepackage{biolinum}
 %\usepackage{XCharter}
 \usepackage{newpxtext, newpxmath}
 %\usepackage[libertine,cmintegrals,cmbraces,vvarbb]{newtxmath}
 
 % line spacing
-\usepackage[onehalfspacing]{setspace}
+%\usepackage[onehalfspacing]{setspace}
+\usepackage[doublespacing]{setspace}
+
+% pararaph spacing
+\usepackage[indent=20pt]{parskip}
 
 % images
 \usepackage{graphicx}
+\usepackage{subcaption}
 \graphicspath{{./images}}
+\usepackage[export]{adjustbox} % trim images by percentages
+\usepackage{caption}
+\captionsetup[sub]{labelsep=period,subrefformat=brace}
 
 % navigation, toc, hyperlinks
 \usepackage{bookmark} % this also loads hidelinks

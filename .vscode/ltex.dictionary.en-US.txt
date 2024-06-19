@@ -13,3 +13,8 @@ DoFs
 Levenberg-Marquardt
 TMTDyn
 ChainQueen
+Clavel
+Reymond
+underactuated
+Briot
+Kahrs

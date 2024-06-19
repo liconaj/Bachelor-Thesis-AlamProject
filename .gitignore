@@ -14,3 +14,7 @@ venv
 *.bbl-SAVE-ERROR
 *.bcf
 *.run.xml
+*.blg
+
+# Arduino
+build/
