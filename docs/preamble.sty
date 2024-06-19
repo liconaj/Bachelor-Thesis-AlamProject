@@ -31,7 +31,7 @@
 % navigation, toc, hyperlinks
 \usepackage{bookmark} % this also loads hidelinks
 %\usepackage[hidelinks]{hyperref}
-\usepackage{hypcap} % achor links to the images, not the caption
+\usepackage[all]{hypcap} % achor links to the images, not the caption
 \hypersetup{
     pdftitle={Design of a Portable Control Platform for Rod-Driven Continuum Parallalel Robots},
     pdfsubject={Graduation Project},
@@ -47,8 +47,25 @@
 \usepackage[backend=biber]{biblatex}
 \addbibresource{bibliography.bib}
 
-% addbookmark
+% add a bookmark
 \newcommand{\addbookmark}[2]{
-    \hypertarget{#1}{} % Set hypertarget
-    \bookmark[dest=#1,level=chapter]{#2} % Add bookmark
+    \cleardoublepage
+    \pdfbookmark[chapter]{#1}{#2}
 }
+
+% add chapter to Contents and bookmarks
+\newcommand{\addcontent}[1]{
+    \cleardoublepage
+    \phantomsection
+    \addcontentsline{toc}{chapter}{#1}
+}
+
+% create a chapter and add to bookmarls
+\newcommand{\phantomchapter}[2]{
+    \addbookmark{#1}{#2}
+    \chapter*{#1}
+}
+
+
+% prevents page numbers and headings from appearing on empty pages.
+\usepackage{emptypage}

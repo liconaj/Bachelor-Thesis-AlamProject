@@ -1,41 +1,47 @@
-\documentclass[a4paper,12pt]{report}
+\documentclass[a4paper,12pt,oneside]{book}
 \usepackage{preamble}
 
+
 \begin{document}
+
+%=======================================
+\frontmatter
 
 \import{}{title}
 
 % dedication
-\include{sections/dedication}
+\addbookmark{Dedication}{dedication}
+\import{sections/}{dedication}
 \normalsize
 
 % abstract
-\chapter*{Abstract}
+\phantomchapter{Abstract}{abstract}
 \import{sections/}{abstract}
 
 % acknowledgements
-\chapter*{Acknowledgements}
+\phantomchapter{Acknowledgements}{acknowledgement}
 \import{sections/}{acknowledgements}
 
 % table of contents
+\addbookmark{\contentsname}{toc}
 \tableofcontents
 
 % list of figures
-\cleardoublepage
-\phantomsection
-\addcontentsline{toc}{chapter}{\listfigurename}
+\addcontent{\listfigurename}
 \listoffigures
 
 % list of tables
-\cleardoublepage
-\phantomsection
-\addcontentsline{toc}{chapter}{\listtablename}
+\addcontent{\listtablename}
 \listoftables
 
-% chapters
+%=======================================
+\mainmatter
 
 \chapter{Introduction}
 \import{sections/}{introduction}
+
+%=======================================
+\backmatter
 
 % references
 %\nocite{*}  % show all references
@@ -43,4 +49,4 @@
     heading=bibintoc,
     title={Bibliography}]
 
-\end{document}j
+\end{document}
