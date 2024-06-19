@@ -1,7 +1,7 @@
 #ifndef COMMANDS_H
 #define COMMANDS_H
 
-#include <SerialCommands.h>
+#include "SerialCommands.h"
 
 #include "NamedActuators.h"
 #include "RodActuator.h"
