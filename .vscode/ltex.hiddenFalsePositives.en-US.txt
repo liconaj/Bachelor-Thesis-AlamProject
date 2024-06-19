@@ -8,3 +8,6 @@
 {"rule":"LARGE_NUMBER_OF","sentence":"^\\QThe challenges and necessary modules to further automate the design and analysis of hybrid systems with a large number of states are briefly discussed.\\E$"}
 {"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\Q[width=0.4, trim=0 0 .5 0,clip]facultadingenieria Department of Mechanical Engineering Universidad de los Andes Bogotá D.C., Colombia June 20, 2024\\E$"}
 {"rule":"EN_COMPOUNDS","sentence":"^\\QAs explained by Briot and Kahrs [4], parallel manipulators have been explored in new types of robots, including continuum robots, flying robots, cable-driven robots, underactuated robots, multi-finger hands, and micro-scale parallel robots.\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\Q[trim=0 0 .5 0,clip]facultadingenieria Department of Mechanical Engineering Universidad de los Andes Bogotá D.C., Colombia June XX, 2024\\E$"}
+{"rule":"COMMA_PARENTHESIS_WHITESPACE","sentence":"^\\Q.\\E$"}
+{"rule":"AGREEMENT_SENT_START","sentence":"^\\QAcknowledgements sections/ acknowledgements\\E$"}

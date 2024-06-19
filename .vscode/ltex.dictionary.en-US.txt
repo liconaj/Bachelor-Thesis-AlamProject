@@ -18,3 +18,7 @@ Reymond
 underactuated
 Briot
 Kahrs
+Elastica
+downsampling
+Proc
+Comput
