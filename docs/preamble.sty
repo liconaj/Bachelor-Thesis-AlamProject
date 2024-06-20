@@ -4,8 +4,15 @@
 
 % margins
 \usepackage[margin=3cm]{geometry}
-\overfullrule=2mm % highlight overfull in generated document
-\setlength{\emergencystretch}{3em} % avoid overfull
+\overfullrule=1mm % highlight overfull in generated document
+\setlength{\emergencystretch}{2em} % avoid overfull
+
+% language
+\usepackage{polyglossia}
+\setdefaultlanguage{english}
+
+% dummy text
+\usepackage{blindtext}
 
 % font
 %\usepackage{biolinum}
@@ -25,8 +32,12 @@
 \usepackage{subcaption}
 \graphicspath{{./images}}
 \usepackage[export]{adjustbox} % trim images by percentages
+
+% caption
 \usepackage{caption}
 \captionsetup[sub]{labelsep=period,subrefformat=brace}
+\captionsetup{font=normalsize,labelfont={bf,sf}}
+\captionsetup[sub]{font=footnotesize,labelfont={bf,sf}}
 
 % navigation, toc, hyperlinks
 \usepackage{bookmark} % this also loads hidelinks
@@ -44,7 +55,7 @@
 }
 
 % references
-\usepackage[backend=biber]{biblatex}
+\usepackage[backend=biber,sorting=none,style=ieee]{biblatex}
 \addbibresource{bibliography.bib}
 
 % add a bookmark
@@ -66,6 +77,8 @@
     \chapter*{#1}
 }
 
-
 % prevents page numbers and headings from appearing on empty pages.
 \usepackage{emptypage}
+
+% appendix
+\usepackage[toc,page]{appendix}

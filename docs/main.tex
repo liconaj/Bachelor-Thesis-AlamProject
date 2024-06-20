@@ -40,13 +40,44 @@
 \chapter{Introduction}
 \import{sections/}{introduction}
 
+\chapter{Target Robot Structure}
+\import{sections/}{chapter2}
+
+\chapter{Linear Actuator}
+\import{sections/}{chapter3}
+
+\chapter{Platform Assembly}
+\import{sections/}{chapter4}
+
+\chapter{Control System Interface}
+\import{sections/}{chapter5}
+
+\chapter{Performance and Results}
+\import{sections/}{chapter6}
+
 %=======================================
 \backmatter
+
+\chapter{Conclusions}
+\import{sections/}{conclusions}
+
+\chapter{Future Work and Recommendations}
+\import{sections/}{future}
 
 % references
 %\nocite{*}  % show all references
 \printbibliography[
     heading=bibintoc,
     title={Bibliography}]
+
+\begin{appendices}
+    \addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
+    \makeatletter
+    \addtocontents{toc}{%
+    \begingroup
+    \let\protect\l@chapter\protect\l@section
+    \let\protect\l@section\protect\l@subsection
+    }
+\end{appendices}
 
 \end{document}
