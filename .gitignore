@@ -15,6 +15,7 @@ venv
 *.bcf
 *.run.xml
 *.blg
+_minted-main
 
 # Arduino
 build/
