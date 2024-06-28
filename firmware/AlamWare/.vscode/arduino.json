@@ -3,5 +3,6 @@
     "board": "arduino:avr:mega",
     "sketch": "AlamWare.ino",
     "programmer": "avrisp",
-    "output": "../build"
+    "output": "../build",
+    "port": "/dev/ttyACM0"
 }

@@ -20,7 +20,6 @@
 | Código | Descripción                                                                                           | Ejemplo                 | Implementado |
 | ------ | ----------------------------------------------------------------------------------------------------- | ----------------------- | ------------ |
 | `M00`  | Detener                                                                                               | `M00`                   | Sí           |
-| `M30`  | Fin del programa. También resetea el programa para iniciar desde el principio si se ejecuta de nuevo. | `M30`                   |              |
 | `M85`  | Tiempo máximo de espera de comando (valor predeterminado, 5 segundos)                                 | `M85 P5000`             | Sí           |
 | `M114` | Reportar posición actual de los actuadores                                                            | `M114`                  | Sí           |
 | `M301` | Establece los parámetros PID.                                                                         | `M301 P1.0 I0.05 D0.01` | Sí           |

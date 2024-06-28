@@ -48,8 +48,8 @@ class RodActuator {
 
   bool isStable(float threshold);
   volatile long &angPosition;
-  uint8_t IN1;  // Pin velocidad adelante
-  uint8_t IN2;  // Pin velocidad atrás
+  uint8_t IN1;  // Pin forward velocity
+  uint8_t IN2;  // Pin backwards velocity
   uint8_t ENA;  // Pin encoder A
   uint8_t ENB;  // Pin encoder B
 
@@ -61,11 +61,11 @@ class RodActuator {
   uint8_t speed = 255;
   unsigned long timeout = 5000;
   unsigned long timer = millis();
-  float position = 0;  // Posición lineal actual
+  float position = 0;
   float lastPosition = 0;
-  float desiredPosition = 0;  // Posición lineal deseada
+  float desiredPosition = 0;
   float lastAngvelocity = 0;
-  float angVelocity = 0;  // Velocidad angular de los motores (interfaz para el PWM)
+  float angVelocity = 0;  // motor angular position
 
   MoveMode moveMode = Global;
 

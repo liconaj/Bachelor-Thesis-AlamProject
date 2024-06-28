@@ -16,8 +16,8 @@
 // 1.1
 #define A_ENA 21
 #define A_ENB 24
-#define A_IN1 12
-#define A_IN2 13
+#define A_IN1 13
+#define A_IN2 12
 // 1.3
 #define B_ENA 20
 #define B_ENB 23
@@ -31,13 +31,13 @@
 // 2.1
 #define I_ENA 19
 #define I_ENB 65
-#define I_IN1 8
-#define I_IN2 9
+#define I_IN1 9
+#define I_IN2 8
 // 2.3
 #define J_ENA 2
 #define J_ENB 64
-#define J_IN1 4
-#define J_IN2 5
+#define J_IN1 5
+#define J_IN2 4
 // 1.2
 #define K_ENA 18
 #define K_ENB 22

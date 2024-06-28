@@ -156,6 +156,9 @@ bool RodActuator::Next() {
 }
 
 void RodActuator::SetMaxSpeed(uint8_t maxSpeed) {
+  if (maxSpeed < 50) {
+    maxSpeed = 50;
+  }
   RodActuator::speed = maxSpeed;
 }
 

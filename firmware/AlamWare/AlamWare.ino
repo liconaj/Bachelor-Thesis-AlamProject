@@ -1,7 +1,8 @@
+#include "Memory.h"
 #include "Commands.h"
 
 // SerialCommands Setup
-char serialCommandBuffer[32];
+char serialCommandBuffer[128];
 SerialCommands serialCommands(&Serial, serialCommandBuffer, sizeof(serialCommandBuffer));
 
 void addSerialCommands() {
