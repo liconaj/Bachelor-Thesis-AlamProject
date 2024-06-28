@@ -14,11 +14,6 @@ class RodActuator {
     Relative
   };
 
-  enum DistanceUnit {
-    Millimeters,
-    Inches
-  };
-
   void Stop();
   void Update();
   void SetPIDConstants(float Kp, float Ki, float Kd);
@@ -29,22 +24,20 @@ class RodActuator {
   void SetLeftLimit(float leftLimit);
   void SetRightLimit(float rightLimit);
   void SetMaxSpeed(uint8_t maxSpeed);
-  void SetDistanceUnit(DistanceUnit unitSystem);
   void SetMoveMode(MoveMode);
   void SetTimeout(float timeout);
   void MoveToHome();
-  void MoveToSecondHome();
+  void MoveToTarget();
   void SetHomePosition(float newHomePosition);
-  void SetSecondHomePosition(float newSecondHomePosition);
+  void SetTargetPosition(float newSecondHomePosition);
   float GetHomePosition();
-  float GetSecondHomePosition();
+  float GetTargetPosition();
   void AutoTune();
   bool Next();
 
  private:
   float homePosition = 0;
-  float secondHomePosition = 0;
-  DistanceUnit distanceUnit = Millimeters;
+  float targetPosition = 0;
 
   bool isStable(float threshold);
   volatile long &angPosition;

@@ -11,8 +11,6 @@ void addSerialCommands() {
   serialCommands.AddCommand(&GHelp);
   serialCommands.AddCommand(&G1);
   serialCommands.AddCommand(&G4);
-  serialCommands.AddCommand(&G20);
-  serialCommands.AddCommand(&G21);
   serialCommands.AddCommand(&G92);
   serialCommands.AddCommand(&G92_1);
   serialCommands.AddCommand(&G28);
@@ -31,6 +29,7 @@ void addSerialCommands() {
 
 void setup() {
   Serial.begin(250000);
+  Serial.print("this is alam");
   addSerialCommands();
 }
 

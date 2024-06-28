@@ -94,9 +94,6 @@ void RodActuator::Stop() {
 }
 
 void RodActuator::Move(float desiredPosition) {
-  if (distanceUnit == Inches) {
-    desiredPosition *= 25.4;
-  }
   next = false;
   timer = millis();
   move = true;
@@ -112,16 +109,16 @@ float RodActuator::GetHomePosition() {
   return homePosition;
 }
 
-float RodActuator::GetSecondHomePosition() {
-  return secondHomePosition;
+float RodActuator::GetTargetPosition() {
+  return targetPosition;
 }
 
 void RodActuator::SetHomePosition(float newHome) {
   RodActuator::homePosition = newHome;
 }
 
-void RodActuator::SetSecondHomePosition(float newSecondHome) {
-  RodActuator::secondHomePosition = newSecondHome;
+void RodActuator::SetTargetPosition(float newSecondHome) {
+  RodActuator::targetPosition = newSecondHome;
 }
 
 void RodActuator::MoveToHome() {
@@ -132,10 +129,10 @@ void RodActuator::MoveToHome() {
   Move(desiredPosition);
 }
 
-void RodActuator::MoveToSecondHome() {
-  float desiredPosition = secondHomePosition;
+void RodActuator::MoveToTarget() {
+  float desiredPosition = targetPosition;
   if (moveMode == MoveMode::Relative) {
-    desiredPosition = secondHomePosition - desiredPosition;
+    desiredPosition = targetPosition - desiredPosition;
   }
   Move(desiredPosition);
 }
@@ -184,10 +181,6 @@ void RodActuator::AutoTune() {
 
 void RodActuator::SetMoveMode(MoveMode moveMode) {
   RodActuator::moveMode = moveMode;
-}
-
-void RodActuator::SetDistanceUnit(DistanceUnit distanceUnit) {
-  RodActuator::distanceUnit = distanceUnit;
 }
 
 // =========================================

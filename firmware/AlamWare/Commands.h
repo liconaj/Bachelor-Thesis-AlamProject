@@ -22,11 +22,9 @@ void cmdMoveActuator(SerialCommands *);
 void cmdSetGlobalMode(SerialCommands *);
 void cmdSetRelativeMode(SerialCommands *);
 void cmdSetHome(SerialCommands *);
-void cmdSetSecondHome(SerialCommands *);
+void cmdSetTarget(SerialCommands *);
 void cmdMoveToHome(SerialCommands *);
-void cmdMoveToSecondHome(SerialCommands *);
-void cmdSetUnitInches(SerialCommands *);
-void cmdSetUnitMillimeters(SerialCommands *);
+void cmdMoveToTarget(SerialCommands *);
 
 // M-Code Definitions
 
@@ -41,14 +39,12 @@ void cmdSetPIDConstants(SerialCommands *);
 SerialCommand GHelp("G", &cmdGetGCodes);
 SerialCommand G4("G4", &cmdDelay);
 SerialCommand G1("G1", &cmdMoveActuator);
-SerialCommand G20("G20", &cmdSetUnitInches);
-SerialCommand G21("G21", &cmdSetUnitMillimeters);
 SerialCommand G28("G28", &cmdMoveToHome);
-SerialCommand G28_1("G28.1", &cmdMoveToSecondHome);
+SerialCommand G28_1("G28.1", &cmdMoveToTarget);
 SerialCommand G90("G90", &cmdSetGlobalMode);
 SerialCommand G91("G91", &cmdSetRelativeMode);
 SerialCommand G92("G92", &cmdSetHome);
-SerialCommand G92_1("G92.1", &cmdSetSecondHome);
+SerialCommand G92_1("G92.1", &cmdSetTarget);
 
 SerialCommand MHelp("M", &cmdGetMCodes);
 SerialCommand M00("M00", &cmdStop);
@@ -133,14 +129,12 @@ void cmdGetGCodes(SerialCommands *sender) {
   sender->GetSerial()->println("G: Show this help");
   sender->GetSerial()->println("G1: Move actuator");
   sender->GetSerial()->println("G4: Pause robot by a determined P<time>");
-  sender->GetSerial()->println("G20: Set inches as distance units");
-  sender->GetSerial()->println("G21: Set millimeters as distance units");
   sender->GetSerial()->println("G28: Move actuators to home position");
-  sender->GetSerial()->println("G28.1: Move actuators to second home position");
+  sender->GetSerial()->println("G28.1: Move actuators to target position");
   sender->GetSerial()->println("G90: Set global positioning mode");
   sender->GetSerial()->println("G91: Set relative positioning mode");
-  sender->GetSerial()->println("G92: Move to home position");
-  sender->GetSerial()->println("G92.1: Move to second home position");
+  sender->GetSerial()->println("G92: Set home position");
+  sender->GetSerial()->println("G92.1: Set target position");
 }
 
 void cmdGetMCodes(SerialCommands *sender) {
@@ -315,14 +309,14 @@ void cmdSetHome(SerialCommands *sender) {
   }
 }
 
-void cmdSetSecondHome(SerialCommands *sender) {
+void cmdSetTarget(SerialCommands *sender) {
   sendingCommand = true;
   char *arg;
   while ((arg = sender->Next()) != NULL) {
     char id = arg[0];
     float value = atof(arg + 1);
     RodActuator *actuator = getActuatorByName(id);
-    actuator->SetSecondHomePosition(value);
+    actuator->SetTargetPosition(value);
   }
 }
 
@@ -349,40 +343,26 @@ void cmdMoveToHome(SerialCommands *sender) {
   }
 }
 
-void cmdMoveToSecondHome(SerialCommands *sender) {
+void cmdMoveToTarget(SerialCommands *sender) {
   sendingCommand = true;
   char *arg;
   arg = sender->Next();
   if (arg == NULL) {
     for (NamedActuator actuator : namedActuators) {
-      actuator.object->MoveToSecondHome();
+      actuator.object->MoveToTarget();
     }
   } else {
     char id = arg[0];
     float value = atof(arg + 1);
     RodActuator *actuator = getActuatorByName(id);
-    actuator->MoveToSecondHome();
+    actuator->MoveToTarget();
 
     while ((arg = sender->Next()) != NULL) {
       id = arg[0];
       float value = atof(arg + 1);
       actuator = getActuatorByName(id);
-      actuator->MoveToSecondHome();
+      actuator->MoveToTarget();
     }
-  }
-}
-
-void cmdSetUnitInches(SerialCommands *sender) {
-  sendingCommand = true;
-  for (NamedActuator actuator : namedActuators) {
-    actuator.object->SetDistanceUnit(actuator.object->Inches);
-  }
-}
-
-void cmdSetUnitMillimeters(SerialCommands *sender) {
-  sendingCommand = true;
-  for (NamedActuator actuator : namedActuators) {
-    actuator.object->SetDistanceUnit(actuator.object->Millimeters);
   }
 }
 

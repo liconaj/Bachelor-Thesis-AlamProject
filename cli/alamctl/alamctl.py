@@ -1,23 +1,55 @@
+#!/usr/bin/python3
+
 import serial
 import sys
 import argparse
 import time
+import serial.tools.list_ports
 
 EOC = "!EOC"
 EOL = "\r\n"
 
+def get_ports():
+    ports = []
+    patterns = ["COM", "ttyACM", "ttyUSB"]
+    for pattern in patterns:
+        ports += serial.tools.list_ports.grep(pattern)
+    return ports
+
+def list_ports():
+    ports = get_ports()
+    for port in ports:
+        print("{0:<20} \t {1:<30}".format(port.device, port.manufacturer))
+
 parser = argparse.ArgumentParser()
+parser.add_argument("-p", "--port", help="set device port")
 parser.add_argument("-f", "--file", help="open G-CODE file")
-parser.add_argument("-p", "--port", help="set COM port")
+parser.add_argument("-l", "--list", help="list available devices", action="store_true")
 args = parser.parse_args()
+
+if args.list:
+    list_ports()
+    sys.exit()
 
 if args.port:
     port = args.port
 else:
-    port = "COM3"
+    ports = get_ports()
+    print(f"{len(ports)} device(s) found")
+    if not ports:
+        print("No serial ports available")
+        sys.exit()
+    else:
+        port = ports[0].device
+    print(f"Connecting to {port}...")
 
 try:
     mcu = serial.Serial(port=port, baudrate=250000, timeout=.1)
+    time.sleep(1)
+    reponse = mcu.readline().decode()
+    if not reponse.startswith("this is alam"):
+        print("Incompatible robot")
+        sys.exit()
 except serial.SerialException:
     print("Serial port unavailable")
     sys.exit()
@@ -40,16 +72,16 @@ def parse_command(cmd: str) -> str:
 
 if __name__ == "__main__":
     if args.file is None:
-        print("\nAlam(brito) Control Center")
-        print("by Josue Licona (C) 2024\n")
+        print("\nAlam Control Center")
+        print("By Josue Licona (C) 2024\n")
 
-        print("\nG to show G-CODE commands")
+        print("G to show G-CODE commands")
         print("M to show M-CODE commands")
         print("Ctrl+C or ;EXIT to quit\n")
 
         try:
             while True:
-                cmd = input("alamctl> ").upper()
+                cmd = input("alam> ").upper()
                 if ";EXIT" in cmd:
                     break
                 elif not cmd or cmd.startswith(";"):
