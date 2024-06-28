@@ -40,10 +40,16 @@ def parse_command(cmd: str) -> str:
 
 if __name__ == "__main__":
     if args.file is None:
-        print("\nRodRobot Command Sender\n")
+        print("\nAlam(brito) Control Center")
+        print("by Josue Licona (C) 2024\n")
+
+        print("\nG to show G-CODE commands")
+        print("M to show M-CODE commands")
+        print("Ctrl+C or ;EXIT to quit\n")
+
         try:
             while True:
-                cmd = input("G-CODE> ").upper()
+                cmd = input("alamctl> ").upper()
                 if ";EXIT" in cmd:
                     break
                 elif not cmd or cmd.startswith(";"):
