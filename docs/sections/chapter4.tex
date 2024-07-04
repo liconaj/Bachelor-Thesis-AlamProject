@@ -1,23 +1,89 @@
-\blindtext
 
-\blindtext
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{platform-assembly}
+    \caption{Platform assembly exploded-view}
+    \label{fig:platform-assembly}
+\end{figure}
 
-\section{Structural Supports}
+\begin{table}[]
+    \centering
+    \caption{Platform assembly parts list}
+    \label{tab:platform-assembly}
+    \begin{tabular}{llll}
+    \toprule
+    Item & Qty & Part Name / Description & Source \\
+    \midrule
+    1 & 1 & Actuators Base & 3D Printed \\
+    2 & 2 & Support Base & Acrylic Laser Cut \\
+    3 & 6 & Support Union & Acrylic Laser Cut \\
+    4 & 1 & Support Front & Acrylic Laser Cut \\
+    5 & 2 & Support Lateral & Acrylic Laser Cut \\
+    6 & 1 & Electronics Assembly & \\
+    7 & 4 & Binding Head Screw JIS B 1111 - M3x40 & Commercial \\
+    8 & 24 & Binding Head Screw JIS B 1111 - M3x10 & Commercial \\
+    9 & 6 & Actuator Assembly & \\
+    \bottomrule
+    \end{tabular}
+\end{table}
 
-\blindtext
-
-\blindtext
 
 \section{Electronics Case}
 
-\blindtext
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{electronics-assembly}
+    \caption{Electronics assembly exploded-view}
+    \label{fig:electronics-assembly}
+\end{figure}
+
+\begin{table}[]
+    \centering
+    \caption{Electronics assembly parts list}
+    \label{tab:electronics-assembly}
+    \begin{tabular}{llll}
+    \toprule
+    Item & Qty & Part Name / Description & Source \\
+    \midrule
+    1 & 1 & Arduino Case & 3D Printed \\
+    2 & 1 & Breadboard Base & 3D Printed \\
+    3 & 1 & Half-Size Breadboard & Commercial \\
+    4 & 1 & Left Wall & Acrylic Laser Cut \\
+    5 & 1 & Right Wall & Acrylic Laser Cut \\
+    6 & 1 & Top Wall & Acrylic Laser Cut \\
+    7 & 1 & Bottom Wall & Acrylic Laser Cut \\
+    8 & 1 & DC Power Input Jack - DS-223B & Commercial \\
+    9 & 1 & Power Switch - KCD1-11-2P & Commercial \\
+    10 & 1 & Red Push Button - DS 212 & Commercial \\
+    11 & 2 & IDC 3020-20-0200-00 - 20P 2.54MM & Commercial \\
+    12 & 1 & IDC Support & 3D Printed \\
+    13 & 1 & MX M12 5-Pin Male MIC Connector Plug & Commercial \\
+    14 & 1 & Arduino MEGA 2650 & Commercial \\
+    \bottomrule
+    \end{tabular}
+\end{table}
+
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{electronics-ports}
+    \caption{Ports and connections}
+    \label{fig:electronics-ports}
+\end{figure}
 
 \subsection{Circuit Schematic}
 
-\blindtext
+\begin{figure}
+    \centering
+    \includesvg[width=\textwidth]{main-connection2}
+    \caption{Main circuit schematic}
+    \label{fig:main-circuit-assembly}
+\end{figure}
 
-\section{General Assembly}
-
-\blindtext
-
-\blindtext
+\begin{figure}
+    \centering
+    \includesvg[width=\textwidth]{motor-connection2}
+    \caption{Motor circuit schematic}
+    \label{fig:motor-circuit-assembly}
+\end{figure}
