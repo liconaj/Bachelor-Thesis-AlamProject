@@ -1,0 +1,22 @@
+\begin{minted}[frame=lines,framesep=2mm,baselinestretch=1.2]{matlab}
+% Get data
+dataTable = readtable("datos.csv");
+t = dataTable.t/1000;  %convert time from milliseconds to seconds
+PWM = dataTable.PWM;
+A = dataTable.A;
+startTime = t(1);
+sampleTime = mean(diff(t));
+mydata = iddata(A,PWM,sampleTime,"Tstart", startTime);
+
+% Find transfer function of system
+npoles = 2; nzeros = 1;
+Options = tfestOptions;
+Options.Display = 'on';
+Options.EnforceStability = true;
+tf1 = tfest(mydata, npoles, nzeros, Options, 'Ts', sampleTime, ...
+    'Feedthrough', true);
+
+% PID Tune
+opts = pidtuneOptions("PhaseMargin", 90);
+[C, info] = pidtune(tf1, 'PI', 5, opts);
+\end{minted}

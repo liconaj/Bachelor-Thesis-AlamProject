@@ -25,7 +25,7 @@
 % highlight source code
 %\usepackage{cascadia-code}
 \usepackage[outputdir=output]{minted}
-\usemintedstyle{tango}
+\usemintedstyle{vs}
 \newmintinline{gcode}{}
 
 % line spacing
@@ -36,6 +36,7 @@
 \usepackage[indent=20pt]{parskip}
 
 % images
+\usepackage{svg}
 \usepackage{graphicx}
 \usepackage{subcaption}
 \graphicspath{{./images}}
@@ -94,3 +95,6 @@
 % tables
 \usepackage{booktabs}
 \newcommand{\centered}[1]{\begin{tabular}{@{}l@{}} #1 \end{tabular}}
+
+% maths
+\newcommand{\myvec}{\overrightarrow}

@@ -70,14 +70,35 @@
     heading=bibintoc,
     title={Bibliography}]
 
+
+%=======================================
+% appendices
+
 \begin{appendices}
-    \addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
-    \makeatletter
-    \addtocontents{toc}{%
-    \begingroup
-    \let\protect\l@chapter\protect\l@section
-    \let\protect\l@section\protect\l@subsection
-    }
+    \renewcommand{\thechapter}{}
+    \renewcommand{\thesection}{\Alph{section}}
+    %\addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
+    %\makeatletter
+    %\addtocontents{toc}{%
+    %\begingroup
+    %\let\protect\l@chapter\protect\l@section
+    %\let\protect\l@section\protect\l@subsection
+    %}
+
+    \section{Forces in Actuator Arm}\label{apx:arm-calcs}
+    \import{appendices/}{arm-forces-calcs}
+
+    \section{PID Tuning Code}\label{apx:pid-code}
+    \import{appendices/}{pid-code}
+
+    \section{Test Code}\label{apx:test-code}
+    \import{appendices/}{test-code}
+
+    \section{Command Line Interface Source Code}\label{apx:cli-code}
+    \import{appendices/}{cli-code}
+
+    \section{Firmware Source Code}\label{apx:firmware-code}
+    \import{appendices/}{firmware-source-code}    
 \end{appendices}
 
 \end{document}

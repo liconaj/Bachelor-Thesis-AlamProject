@@ -1,0 +1,11 @@
+\begin{minted}[frame=lines,framesep=2mm,baselinestretch=1.2]{matlab}
+syms Fb P rAx rAy rBx rBy
+
+vecFb = [Fb 0 0];
+vecP = [0 P 0];
+rA = [rAx rAy 0];
+rB = [rBx rBy 0];
+
+eq = cross(rA, vecP) + cross(rB, vecFb);
+solve(eq, Fb)
+\end{minted}
