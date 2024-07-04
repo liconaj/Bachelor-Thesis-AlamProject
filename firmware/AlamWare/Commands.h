@@ -144,6 +144,7 @@ void cmdGetMCodes(SerialCommands *sender) {
   sender->GetSerial()->println("M00: Stop actuators");
   sender->GetSerial()->println("M85: Set command timeout with P<milliseconds> or S<seconds>");
   sender->GetSerial()->println("M114: Report actual position of actuators");
+  sender->GetSerial()->println("M300: Test actuators");
   sender->GetSerial()->println("M301: Set PID constants with P<value> I<value> D<value>");
   sender->GetSerial()->println("M303: Starts autotuning");
 }
