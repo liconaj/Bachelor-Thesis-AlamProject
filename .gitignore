@@ -16,6 +16,7 @@ venv
 *.run.xml
 *.blg
 _minted-main
+svg-inkscape
 
 # Arduino
 build/
