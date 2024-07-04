@@ -47,7 +47,7 @@ class RodActuator {
   uint8_t ENB;  // Pin encoder B
 
   float ticksRev = 7.0;     // ticks in angPosition that makes a rev
-  float gearRatio = 235.0;  // reducion gear of gearRatio:1
+  float gearRatio = 210.0;  // reducion gear of gearRatio:1
   float R = 5.3;
   float positionFactor;
 
