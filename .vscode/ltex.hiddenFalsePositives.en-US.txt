@@ -11,3 +11,4 @@
 {"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\Q[trim=0 0 .5 0,clip]facultadingenieria Department of Mechanical Engineering Universidad de los Andes Bogotá D.C., Colombia June XX, 2024\\E$"}
 {"rule":"COMMA_PARENTHESIS_WHITESPACE","sentence":"^\\Q.\\E$"}
 {"rule":"AGREEMENT_SENT_START","sentence":"^\\QAcknowledgements sections/ acknowledgements\\E$"}
+{"rule":"CD_NN","sentence":"^\\QPlatform assembly parts list Item Qty Part Name / Description Source 1 1 Actuators Base 3D Printed 2 2 Support Base Acrylic Laser Cut 3 6 Support Union Acrylic Laser Cut 4 1 Support Front Acrylic Laser Cut 5 2 Support Lateral Acrylic Laser Cut 6 1 Electronics Assembly 7 4 Binding Head Screw JIS B 1111 - M3x40 Commercial 8 24 Binding Head Screw JIS B 1111 - M3x10 Commercial 9 6 Actuator Assembly\\E$"}
