@@ -1,12 +1,15 @@
-\begin{figure}
+The Alam robot platform was successfully constructed using steel rod segments, as depicted in Figure \ref{fig:arm-segments}. The constraints securely fasten to the rods, ensuring stability and structural integrity.
+
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{arm-segments}
     \caption{Arm segments}
-    \label{arm-segmentes}
+    \label{fig:arm-segments}
 \end{figure}
 
+Figure \ref{fig:arm-positions} illustrates the robot in three different poses using a single segment: one with the arm to the left, another in a straight configuration, and the third with the arm to the right. The actuators demonstrated sufficient friction and force to maintain each position effectively.
 
-\begin{figure}
+\begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.3\textwidth}
         \includegraphics[width=\textwidth]{arm-left}
@@ -24,17 +27,24 @@
         \label{fig:arm-right}
     \end{subfigure}
     \caption{One segment arm positions}
-    \label{arm-positions}
+    \label{fig:arm-positions}
 \end{figure}
 
-\begin{figure}
+The firmware and control application functioned well during testing; however, the firmware remains incomplete, particularly in handling commands with erroneous parameters. Most code functionalities were tested, but aspects related to EEPROM memory and robot status display were not fully implemented. Additionally, joystick control remains unimplemented.
+
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{electronics}
     \caption{Electronics case and connections}
-    \label{electronics}
+    \label{fig:electronics}
 \end{figure}
 
-\begin{figure}
+
+The electronics case, shown in Figure \ref{fig:electronics}, was initially prototypical, utilizing a breadboard and jumper wires for connections. This setup proved cumbersome and prone to disconnection, complicating assembly and debugging processes.
+
+Figure \ref{fig:complete-prototype} compares the prototype with two segments against the initial design. The prototype closely resembles the design, demonstrating successful realization of the intended structure.
+
+\begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.3\textwidth}
         \includegraphics[width=\textwidth]{real-model}
@@ -47,10 +57,12 @@
         \label{fig:design-model}
     \end{subfigure}
     \caption{Complete prototype}
-    \label{complete-prototype}
+    \label{fig:complete-prototype}
 \end{figure}
 
-\begin{figure}
+Issues encountered with the linear actuators are depicted in Figure \ref{fig:manufacturing-issues}, including tolerance discrepancies, alignment challenges between rod and bearing, printing errors, and base deformation due to spring force, which occasionally caused detachment of the arm from its support.
+
+\begin{figure}[H]
     \centering
     \begin{subfigure}[t]{0.6\textwidth}
         \includegraphics[width=\textwidth]{fdm-issues}
@@ -63,9 +75,11 @@
         \label{fig:arm-spring-issue}
     \end{subfigure}
     \caption{Linear actuator issues}
-    \label{manufacturing-issues}
+    \label{fig:manufacturing-issues}
 \end{figure}
 
+
+Finally, Table \ref{tab:platform-specifications} presents general specifications of the platform, including height, maximum arm reach, body dimensions, and actuator tolerances.
 
 \begin{table}[h]
     \centering
