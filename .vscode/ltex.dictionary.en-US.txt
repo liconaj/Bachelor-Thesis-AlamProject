@@ -26,3 +26,6 @@ toc
 AISI
 GPa
 JIS
+tunings
+QuickPID
+sTune
