@@ -1,8 +1,8 @@
-Rod-driven Continuum Parallel Robots (RDCPR) represent a relatively new class of robots characterized by their unique rod-driven actuation mechanism. Limiting and defining the dimensions and structure of these robots is crucial for the development of the platform, which aims to facilitate their movement and operation in various applications. In the following sections, a detailed exploration will be conducted on the configuration and essential components that define the structure and operational capabilities of the RDCPR.
+Rod-driven continuum parallel robots (RDCPR) represent a relatively novel class of robots characterized by their distinctive rod-driven actuation mechanism. It is of paramount importance to define and limit the dimensions and structural characteristics of these robots, in order to facilitate the development of a platform which will enable the robots to be moved and operated in a variety of applications. The following sections will conduct a detailed exploration of the configuration and essential components that define the structure and operational capabilities of the RDCPR.
 
 \section{Reference Model}
 
-The reference model, depicted in Figure \ref{fig:ref-robot}, was developed by Wu and Shi \cite{wu2022}. It was chosen due to its representation as one of the most comprehensive RDCPR designs, showcasing versatility and a wide range of motion. With 5 DoFs, it features two independently manipulable segments, making it extensible.
+The reference model, depicted in Figure \ref{fig:ref-robot}, was developed by Wu and Shi \cite{wu2022}. The design was selected for its comprehensive representation of an RDCPR, showcasing versatility and a wide range of motion. The robot features two independently manipulable segments, allowing for a total of five degrees of freedom (DoFs), which makes it extensible.
 
 \begin{figure}[H]
     \centering
@@ -21,7 +21,7 @@ The reference model, depicted in Figure \ref{fig:ref-robot}, was developed by Wu
     \label{fig:ref-robot}
 \end{figure}
 
-The inclusion of intermediate constraints, as illustrated in Figure \ref{fig:ref-robot2-constraints}, enhances the robot's operational range.
+The incorporation of intermediate constraints, as Figure \ref{fig:ref-robot2-constraints} illustrates, expands the operational range of the robot.
 
 \begin{figure}[H]
     \centering
@@ -42,7 +42,7 @@ The inclusion of intermediate constraints, as illustrated in Figure \ref{fig:ref
 
 \section{Rod Material}
 
-A rod, denoted as \( r \), is defined with the inequality \( L \gg r \), where \( L \) represents its length and \( r \) its radius. In the reference model, rods are constructed from fiberglass, while in Figure \ref{fig:ref-robot2-constraints}, they are made from steel. These materials are commonly used due to their high stiffness and ability to withstand  significant bending without plastic deformation or fracture. Steel alloys like AISI 302, commonly used in springs, exemplify these properties well. Table \ref{tab:material-properties} details the material properties of AISI 302 steel and fiberglass.
+A rod is defined by the inequality \( L \gg r \), where \( L \) represents its length and \( r \) its radius. In the reference model, rods are constructed from fiberglass, whereas in Figure \ref{fig:ref-robot2-constraints}, they are made from steel. These materials are commonly utilized due to their high stiffness and capacity to withstand significant bending without plastic deformation or fracture. Steel alloys, such as AISI 302, which are commonly employed in springs, exemplify these properties. Table \ref{tab:material-properties} provides the material properties of AISI 302 steel and fiberglass.
 
 \begin{table}[h]
     \centering
@@ -58,7 +58,7 @@ A rod, denoted as \( r \), is defined with the inequality \( L \gg r \), where \
 \end{table}
 
 
-While the Cosserat rod model \cite{russo2023} is commonly used for analyzing these robots, understanding the maximum deflection that a rod can withstand involves applying the Euler-Bernoulli beam equation \ref{eq:max-d}, where \( I \) is given by equation \ref{eq:I}. For practical purposes, a configuration of AISI 302 steel rods was chosen due to its commercial availability, with dimensions specified in Table \ref{tab:comparison}.
+While the Cosserat rod model \cite{russo2023} is commonly used for analyzing these robots, understanding the maximum deflection that a rod can withstand can be determined by applying the Euler-Bernoulli beam equation \ref{eq:max-d}, where \( I \) is given by equation \ref{eq:I}. For the purposes of practicality, a configuration of AISI 302 steel rods was selected due to their commercial availability, with dimensions specified in Table \ref{tab:comparison}. It should be noted that these rods are commonly sold in the form of wire, therefore they had to be straightened prior to use.
 
 \begin{equation}
     \label{eq:max-d}
@@ -87,7 +87,7 @@ While the Cosserat rod model \cite{russo2023} is commonly used for analyzing the
     \end{tabular}
 \end{table}
 
-Despite steel's higher Young's modulus and the necessity for shorter rods with significantly smaller radii, we achieved greater deflections under the same load compared to the reference model. This implies achieving equivalent deflection with less force, which is advantageous for actuators with limited force capabilities, as shown in Figure \ref{fig:force-deflection}.
+Despite the higher Young's modulus of steel and the necessity for shorter rods with significantly smaller radii, we achieved greater deflections under the same load compared to the reference model. As shown in Figure \ref{fig:force-deflection}, this implies that the same deflection can be achieved with less force, which is advantageous for actuators with limited force capabilities.
 
 \begin{figure}
     \centering
@@ -98,25 +98,25 @@ Despite steel's higher Young's modulus and the necessity for shorter rods with s
 
 \section{Design and Dimensions}
 
-To discuss the design and dimensions of the robot, the parts of the robot are depicted in Figure \ref{fig:bodyparts}. These include rods for the first and second segments, constraints, and joints between constraints and rods, which can be either closed-form or cylindrical-form pairs designed to restrict movement. Each intermediate segment is required to have at least one closed-form pair joint with a rod for structural stability, while the remaining joints should be cylindrical to facilitate bending of the arm. At the end of each segment, all joints within the constraints must be closed-form to prevent disassembly of the segment. A minimum of three rods per segment is necessary to maintain structural integrity.
+To discuss the design and dimensions of the robot's body, the various components are depicted in Figure \ref{fig:bodyparts}. These include rods for the first and second segments, constraints, and joints between constraints and rods. The joints can be either closed-form or cylindrical-form pairs designed to restrict movement. Each intermediate segment is required to have at least one closed-form pair joint with a rod for structural stability, while the remaining joints should be cylindrical to facilitate bending of the arm. At the end of each segment, all joints within the constraints must be closed-form to prevent disassembly of the segment. A minimum of three rods per segment is necessary to maintain structural integrity.
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.7\textwidth]{rod-body-parts}
+    \includegraphics[width=0.6\textwidth]{rod-body-parts}
     \caption{Robot body constraints and parts}
     \label{fig:bodyparts}
 \end{figure}
 
-In Figure \ref{fig:robot-body-lateral}, the height of each segment and their respective constraints are illustrated. Additionally, the arm, similar to the reference model, exhibits a tapered envelope. This design choice, influenced by Wu and Shi \cite{wu2022}, enhances structural stiffness. The tapered shape, resembling a truncated cone, is achieved by gradually reducing the cross-sectional area along the length of the arm, contributing to improved rigidity.
+Figure \ref{fig:robot-body-lateral} illustrates the height of each segment and their respective constraints are illustrated. Additionally, the arm exhibits a tapered envelope similar to the reference model. This design choice, influenced by Wu and Shi \cite{wu2022}, enhances structural stiffness. The tapered shape, resembling a truncated cone, is achieved by gradually reducing the cross-sectional area along the length of the arm.
 
 \begin{figure}[H]
     \centering
-    \begin{subfigure}[t]{0.2625\textwidth}
+    \begin{subfigure}[t]{0.2362\textwidth}
         \includegraphics[width=\textwidth]{rod-body-segments}
         \caption{Left view, and robot body segments}
         \label{fig:segments}
     \end{subfigure}
-    \begin{subfigure}[t]{0.4375\textwidth}
+    \begin{subfigure}[t]{0.3937\textwidth}
         \includegraphics[width=\textwidth]{constraint-heights}
         \caption{Frontal view, and constraints heights}
         \label{fig:cons-heights}
@@ -127,7 +127,7 @@ In Figure \ref{fig:robot-body-lateral}, the height of each segment and their res
 
 \section{Ring Constraints}
 
-The proposed constraint design, depicted in Figure \ref{fig:ring-constraint}, takes the form of a ring or hoop and is specifically tailored for additive manufacturing. Its cross-sectional shape is crucial in enhancing lateral load-bearing capabilities by mitigating deformation under load. Unlike traditional circular profiles that can easily deform into ellipses, the chosen rhomboidal cross-section provides structural stability. This geometric configuration, resembling a hollowed-out egg-shaped cylinder in its cross-section, offers improved resistance to lateral forces, ensuring robust performance in rod-driven continuous parallel robots.
+The proposed constraint design, depicted in Figure \ref{fig:ring-constraint}, takes the form of a ring or hoop and is specifically tailored for additive manufacturing. The shape of the cross-section is of great importance, since it allows for enhancement of the lateral load-bearing capabilities, which in turn mitigate deformation under load. In contrast to traditional rectangular profiles, which are prone to deformation intro ellipses, the selected rhomboidal cross-section provides structural stability. This geometric configuration, which resembles a hollowed-out egg-shaped cylinder in its cross-section, offers enhanced resistance to lateral forces, thereby ensuring robust performance in rod-driven continuous parallel robots.
 
 \begin{figure}[H]
     \centering
@@ -145,9 +145,9 @@ The proposed constraint design, depicted in Figure \ref{fig:ring-constraint}, ta
     \label{fig:ring-constraint}
 \end{figure}
 
-The sizes of the constraints used in the rod-driven continuous parallel robots vary, as illustrated in Figure \ref{fig:cons-sizes}, corresponding to the dimensions specified in Table \ref{tab:comparison}. Each constraint size is tailored to accommodate specific rod diameters, as indicated by the rod passing through each hole in the constraint. The type of connection with the constraint, whether closed-form or cylindrical, is also noted in the image.
+The dimensions of the constraints utilized in the rod-driven continuous parallel robots exhibit variance, as illustrated in Figure \ref{fig:cons-sizes}. These dimensions align with the specifications outlined in Table \ref{tab:comparison}. Each hole of the constraints is tailored to accommodate a specific rod, as indicated by the labels beside the holes. Additionally, the image depicts the type of joint with the constraint, whether closed-form or cylindrical.
 
-\begin{figure}
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{constraint-sizes}
     \caption{Ring constraint sizes}
@@ -155,7 +155,7 @@ The sizes of the constraints used in the rod-driven continuous parallel robots v
     \caption*{In \textit{blue}, the diameters of the circumferences enclosing the rods are shown. The rods are labeled \textit{A}, \textit{B}, \textit{C}, \textit{I}, \textit{J}, \textit{K}. The \textit{green} open circle indicates a cylindrical pair constraint between the ring and the rod, while the \textit{red} indicates a closed-form pair constraint involving both.}
 \end{figure}
 
-Physically, a closed-form pair joint is created using a set screw that secures the rod in place, as illustrated in Figure \ref{fig:closed-constraint}. This type of joint provides a firm grip on the rod, preventing any movement. In contrast, a cylindrical-form pair joint is similar in construction but omits the set screw, allowing for both translational and rotational movement along the axis of the hole.
+In terms of physical construction, a closed-form pair joint is created using a set screw that secures the rod in place. This is illustrated in Figure \ref{fig:closed-constraint}. This type of joint provides a firm grip on the rod, preventing any movement. In contrast, a cylindrical-form pair joint is similar in construction but omits the set screw, allowing for both translational and rotational movement along the axis of the hole.
 
 \begin{figure} [H]
     \centering

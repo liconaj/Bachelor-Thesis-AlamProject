@@ -1,10 +1,12 @@
-One of the project objectives was to establish a protocol for controlling the robot. Although the robot has an input for a joystick, this is insufficient for controlling the robot in a three-dimensional space. Additionally, the platform is designed to adapt to any user need, making the creation of a protocol or language for programming the robot essential. This protocol will be integrated into the controller firmware. The commands will be sent in real-time by a device, currently a computer, which serves as the interface for receiving user inputs. For this reason, a command-line application has also been developed to send commands via the established port. The source code for this project, Alam\footnote{This is the name of the project. It is derived from the Spanish word "\textit{alambre}", which translates to rod or wire.}, can be found on GitHub\footnote{\url{https://www.github.com/liconaj/GraduationProject-Alam}}.
+One of the project's objectives was to devise a protocol for controlling the robot. Although the robot has an input for a joystick, this is insufficient for controlling the robot in a three-dimensional space. Furthermore, the platform is designed to accommodate any user requirement, necessitating the development of a protocol or language for programming the robot.
+
+The protocol will be incorporated into the controller firmware. The commands will be transmitted in real-time by a device, currently a computer, which serves as the interface for receiving user inputs. For this reason, a command-line application has also been developed to send commands via the established port. The source code for this project, Alam\footnote{This is the name of the project. It is derived from the Spanish word "\textit{alambre}", which translates to rod or wire.}, can be found on GitHub\footnote{\url{https://www.github.com/liconaj/GraduationProject-Alam}}.
 
 The development of the robot's kinematic model was beyond the scope of this project due to the added complexity. This remains an area for future exploration. Consequently, the control system is direct, specifying the distance or position of each actuator individually and manually. However, the intention is for this protocol to be compatible with such a model in the future.
 
 \section{Protocol Specifications}
 
-The G-Code is a standard language widely used in manufacturing and CNC machining to control machine tools such as mills and lathes. It consists of alphanumeric commands specifying coordinates, speeds, and machine functions. These commands enable precise control and automation in manufacturing processes. Alongside G-Code, M-Code commands control additional machine functions like tool changes and device operations. Adopting G-Code as the foundation for our robot control protocol offers efficiency and clarity, ideal for rapid command transmission to microcontrollers like Arduino. Its hierarchical structure and diverse commands provide the flexibility needed for precise motion control and complex operations, aligning well with our platform's adaptability goals. Detailed definitions of proposed G-Code and M-Code commands are listed in Tables \ref{tab:g-definitions} and \ref{tab:m-definitions}, respectively, offering a clear reference for implementation and usage.
+The G-Code is a standard language that is widely utilized in the manufacturing and computer numerical control (CNC) machining industries to control machine tools, including mills and lathes. It is composed of alphanumeric commands that specify coordinates, speeds, and machine functions. These commands facilitate precise control and automation in manufacturing processes. In addition to G-Code, M-Code commands are employed to control additional machine functions, such as tool changes and device operations.
 
 \begingroup
 \setlength{\tabcolsep}{10pt} % Default value: 6pt
@@ -28,11 +30,11 @@ The G-Code is a standard language widely used in manufacturing and CNC machining
 \end{table}
 \endgroup
 
-The application of these commands and their respective parameters is detailed in Tables \ref{tab:g-codes-usage} and \ref{tab:m-codes-usage}. Each table includes practical examples demonstrating how these commands are implemented. Additionally, Table \ref{tab:code-parameters} provides a comprehensive explanation of the parameters associated with each command.
+The adoption of G-Code as the foundation for our robot control protocol offers efficiency and clarity, rendering it an ideal choice for rapid command transmission to microcontrollers such as the Arduino. Its hierarchical structure and diverse commands provide the flexibility needed for motion control and complex operations, aligning well with the platform's adaptability goals. The detailed definitions of the proposed G-Code and M-Code commands are presented in Tables \ref{tab:g-definitions} and \ref{tab:m-definitions}, respectively. These tables serve as a clear reference for the implementation and usage of the commands.
 
 \begingroup
 \setlength{\tabcolsep}{10pt} % Default value: 6pt
-\renewcommand{\arraystretch}{1.5} % Default value: 1
+\renewcommand{\arraystretch}{1.2} % Default value: 1
 \begin{table}[H]
     \centering
     \caption{M-Code definitions}
@@ -54,32 +56,9 @@ The application of these commands and their respective parameters is detailed in
 \end{table}
 \endgroup
 
-\newcommand{\prompt}{\texttt{> }}
+The application of these commands and their respective parameters is elucidated in Tables \ref{tab:g-codes-usage} and \ref{tab:m-codes-usage}. Each table includes illustrative examples that demonstrate the practical implementation of the aforementioned commands. Additionally, Table \ref{tab:code-parameters} provides a comprehensive explication of the parameters associated with each command.
 
-\begingroup
-\setlength{\tabcolsep}{10pt}
-\renewcommand{\arraystretch}{1.5}
-\begin{table}[H]
-    \centering
-    \caption{G-Codes usage}
-    \label{tab:g-codes-usage}
-    \begin{tabular}{p{0.1\textwidth}p{0.47\textwidth}p{0.28\textwidth}}
-    \toprule
-    Code & Usage & Example \\ \midrule
-    \texttt{G1}  & \gcodeinline/G1 <id><pos> [F<speed,255>]/ & \prompt\gcodeinline/G1 A100.0/\\
-    \texttt{G4}  & \gcodeinline/G4 P<millis>|S<secs>/ & \prompt\gcodeinline/G4 P3000/\\
-    \texttt{G20} & \gcodeinline/G20/ & \prompt\gcodeinline/G20/\\
-    \texttt{G21} & \gcodeinline/G21/ & \prompt\gcodeinline/G21/ \\
-    \texttt{G28} & \gcodeinline/G28 [<id,A B C I J K>]/ & \prompt\gcodeinline/G28 A B C/\\
-    \texttt{G28} & \gcodeinline/G28.1 [<id,A B C I J K>]/ & \prompt\gcodeinline/G28.1 J K/\\
-    \texttt{G90} & \gcodeinline/G90/ & \prompt\gcodeinline/G90/\\
-    \texttt{G91} & \gcodeinline/G91/ & \prompt\gcodeinline/G91/\\
-    \texttt{G92} & \gcodeinline/G92 [<id,A B C I J K><pos,0>]/& \prompt\gcodeinline/G92 A-100.0 I5.0/\\
-    \texttt{G92.1} & \gcodeinline/G92.1 [<id, A B C I J K><pos,0>]/& \prompt\gcodeinline/G92.1 B250.0/\\
-    \bottomrule
-    \end{tabular}
-\end{table}
-\endgroup
+\newcommand{\prompt}{\texttt{> }}
 
 \begingroup
 \setlength{\tabcolsep}{10pt}
@@ -92,10 +71,35 @@ The application of these commands and their respective parameters is detailed in
     \begin{tabular}{p{0.1\textwidth}p{0.5\textwidth}p{0.25\textwidth}}
     \toprule
     Code & Usage & Example \\ \midrule
-    \texttt{M85} & \gcodeinline/M85 P<millis,5000>|S<secs,5>/ & \prompt\gcodeinline/M85 S3/ \\
-    \texttt{M301} & \gcodeinline/M301 [P<kp,0>] [I<ki,0>] [D<kd,0>]/ & \prompt\gcodeinline/M301 P1000 I0.5/ \\
-    \texttt{M500} & \gcodeinline/M500 <optn>/ & \prompt\gcodeinline/M500 T P/ \\
-    \texttt{M502} & \gcodeinline/M502 <optn>/ & \prompt\gcodeinline/M502 I J K/\\
+    \texttt{M85} & \texttt{M85 P<millis,5000>|S<secs,5>} & \prompt\texttt{M85 S3} \\
+    \texttt{M301} & \texttt{M301 [P<kp,0>] [I<ki,0>] [D<kd,0>]} & \prompt\texttt{M301 P1000 I0.5} \\
+    \texttt{M500} & \texttt{M500 <optn>} & \prompt\texttt{M500 T P} \\
+    \texttt{M502} & \texttt{M502 <optn>} & \prompt\texttt{M502 I J K}\\
+    \bottomrule
+    \end{tabular}
+\end{table}
+\endgroup
+
+\begingroup
+\setlength{\tabcolsep}{10pt}
+\renewcommand{\arraystretch}{1.5}
+\begin{table}[H]
+    \centering
+    \caption{G-Codes usage}
+    \label{tab:g-codes-usage}
+    \begin{tabular}{p{0.1\textwidth}p{0.47\textwidth}p{0.28\textwidth}}
+    \toprule
+    Code & Usage & Example \\ \midrule
+    \texttt{G1}  & \texttt{G1 <id><pos> [F<speed,255>]} & \prompt\texttt{G1 A100.0}\\
+    \texttt{G4}  & \texttt{G4 P<millis>|S<secs>} & \prompt\texttt{G4 P3000}\\
+    \texttt{G20} & \texttt{G20} & \prompt\texttt{G20}\\
+    \texttt{G21} & \texttt{G21} & \prompt\texttt{G21} \\
+    \texttt{G28} & \texttt{G28 [<id,A B C I J K>]} & \prompt\texttt{G28 A B C}\\
+    \texttt{G28} & \texttt{G28.1 [<id,A B C I J K>]} & \prompt\texttt{G28.1 J K}\\
+    \texttt{G90} & \texttt{G90} & \prompt\texttt{G90}\\
+    \texttt{G91} & \texttt{G91} & \prompt\texttt{G91}\\
+    \texttt{G92} & \texttt{G92 [<id,A B C I J K><pos,0>]}& \prompt\texttt{G92 A-100.0 I5.0}\\
+    \texttt{G92.1} & \texttt{G92.1 [<id, A B C I J K><pos,0>]}& \prompt\texttt{G92.1 B250.0}\\
     \bottomrule
     \end{tabular}
 \end{table}
@@ -129,12 +133,12 @@ The application of these commands and their respective parameters is detailed in
 
 \section{Command Line Application}
 
-The robot's firmware was developed in Arduino C++ using the Arduino library and the \textit{SerialCommands} library \footnote{\url{https://github.com/ppedro74/Arduino-SerialCommands}} for command definitions. Communication occurs via a serial data bus, as suggested by its name. The command-line application, written in Python, utilizes the \textit{pyserial} library \footnote{\url{https://pypi.org/project/pyserial/}} to establish a connection with the Arduino.
+The robot's firmware was developed in Arduino/C++ using the Arduino library and the \textit{SerialCommands} library \footnote{\url{https://github.com/ppedro74/Arduino-SerialCommands}} for command definitions. Communication occurs via a serial data bus, as suggested by the name of the library. The command-line application, written in Python, employs the \textit{pyserial} library \footnote{\url{https://pypi.org/project/pyserial/}} to establish a connection with the Arduino.
 
 
 \subsection{Architecture}
 
-Figure \ref{fig:firmware-uml} depicts the dependency relationships between the firmware source components and the packages used. Additionally, a flowchart diagram illustrating the interaction between the command-line application and the robot is included in Figure \ref{fig:system-flowchart}.
+Figure \ref{fig:firmware-uml} depicts the dependency relationships between the firmware source components and the packages used. Furthermore, a flowchart diagram illustrating the interaction between the command-line application and the robot is included in Figure \ref{fig:system-flowchart}.
 
 \begin{figure}[H]
     \centering
@@ -144,7 +148,7 @@ Figure \ref{fig:firmware-uml} depicts the dependency relationships between the f
 \end{figure}
 
 
-The serial port data buffer is 128 bytes, meaning each command can have a maximum of 128 characters. Only one command can be sent at a time, separated by a newline. After executing a command, the robot sends a message indicating completion. The robot has a configurable maximum timeout to handle commands that take too long; it will not interrupt or modify its current task until a new instruction is received. The robot's firmware does not support comments, so these are removed by the application's parser to send only essential instructions to the robot.
+The serial port data buffer is 128 bytes, which allows for a maximum of 128 characters per command. Only a single command can be sent at a time, separated by a newline. Following the execution of a command, the robot sends a message indicating completion. The robot is programmed with a configurable maximum timeout, which is employed to handle commands that take an excessive amount of time. Ut will not interrupt or modify its current task until a new instruction is received. The robot's firmware does not support comments, and thus, these are removed by the application's parser to send only essential instructions to the robot.
 
 \begin{figure}[H]
     \centering
@@ -156,72 +160,72 @@ The serial port data buffer is 128 bytes, meaning each command can have a maximu
 
 \subsection{Usage}
 
-To control the robot, the \texttt{alamctl.py} script must be used. The code for this script can be found in Appendix \ref{apx:cli-code}. Figure \ref{fig:cli-usage} shows how to use the application via the help parameter output.
+In order to control the robot, it is necessary to utilize the \texttt{alamctl.py} script. The code for this script can be found in Appendix \ref{apx:cli-code}. Figure \ref{fig:cli-usage} shows how to use the application via the help parameter output.
 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.95\textwidth]{cli-usage}
+    \includegraphics[width=0.85\textwidth]{cli-usage}
     \caption{Command line usage}
     \label{fig:cli-usage}
 \end{figure}
 
-Note that all parameters are optional. If no parameters are passed, as explained in the flowchart in Figure \ref{fig:system-flowchart}, the application will attempt to connect to one of the available ports. However, the recommended method is to search for available ports and then try to connect to the one whose description matches that of the controller, as shown in Figure \ref{fig:cli-connection}.
+It should be noted that all parameters are optional. If no parameters are passed, as explained in the flowchart in Figure \ref{fig:system-flowchart}, the application will attempt to establish a connection to one of the available ports. However, the recommended method is to initially search for available ports and then attempt to connect to the device whose description most closely aligns with that of the controller, as shown in Figure \ref{fig:cli-connection}.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.95\textwidth]{cli-connection}
+    \includegraphics[width=0.85\textwidth]{cli-connection}
     \caption{Command line connection}
     \label{fig:cli-connection}
 \end{figure}
 
-When a successful connection with the robot is established, the application displays a welcome message and a short help guide to start using the robot interactively (see Figure \ref{fig:cli-manual}). However, it is also possible to pass a G-Code script as a parameter for the program to send commands automatically (Figure \ref{fig:cli-file}). This is the most efficient and powerful way to use the platform to control a robot.
+Once a successful connection with the robot has been established, the application displays a welcome message and a brief instructional guide to facilitate the user's interaction with the robot (see Figure \ref{fig:cli-manual}). However, it is also possible to pass a G-Code script as a parameter for the program to send commands automatically (Figure \ref{fig:cli-file}). This is the most efficient and powerful method for users to control a robot.
 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.95\textwidth]{cli-manual}
+    \includegraphics[width=0.85\textwidth]{cli-manual}
     \caption{Command line manual input}
     \label{fig:cli-manual}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.95\textwidth]{cli-file}
+    \includegraphics[width=0.85\textwidth]{cli-file}
     \caption{Command line file parsing}
     \label{fig:cli-file}
 \end{figure}
 
 \section{PID Control and Tuning}
 
-Given that the actuators are equipped with DC motors, the controllable variable is the speed, but the position can be determined thanks to the magnetic encoder, which counts the number of motor revolutions. Based on this, a PID control is implemented to use the position as the input variable, allowing the controller to manipulate the speed to reach the desired position. To implement this control, the \textit{QuickPID}\footnote{\url{https://github.com/Dlloydev/QuickPID}} library was used, which can be integrated with the \textit{sTune} library to determine the actuator tunings automatically. An attempt was made to use this latter library to find the tunings; however, its methods are designed for systems with an S-shaped response to a constant input, which does not apply to our system. Therefore, the results from this library were often unsatisfactory. For this reason, a more powerful tool, such as MATLAB and Simulink, was used to find the tunings.
+Given that the actuators are equipped with DC motors, the controllable variable is the speed. However, the position can be determined thanks to the magnetic encoder, which counts the number of motor revolutions. Based on this, a PID control is implemented, wherein the position is utilized as the input variable, thereby enabling the controller to manipulate the speed in order to reach the desired position. To implement this control, the \textit{QuickPID}\footnote{\url{https://github.com/Dlloydev/QuickPID}} library was employed, which can be integrated with the \textit{sTune} library to determine the actuator tunings automatically. An attempt was made to use this latter library to find the tunings; however, its methods are designed for systems with an S-shaped response to a constant input, which does not apply to our system. Therefore, the outcomes yielded by this library were frequently unsatisfactory. For this reason, a more sophisticated tool, MATLAB and Simulink, was employed.
 
 \subsection{Test Data}
 
 \begin{figure}[h]
     \centering
-    \includegraphics[page=1,width=0.95\textwidth]{input-output-signals}
+    \includegraphics[page=1,width=0.85\textwidth]{input-output-signals}
     \caption{Input and output signals}
     \label{fig:io-signals}
 \end{figure}
 
-First, a test to obtain data from the actuators was conducted to understand the system. This test lasts 4.5 seconds and can be executed with the command \gcodeinline/M300/. It sends a PWM signal to the actuators that varies over time, showing the linear position of the actuator at each time instant, as seen in Figure \ref{fig:io-signals}.
+The initial step involved the implementation of a test to obtain data from the actuators, with the objective to gaining a comprehensive understanding of the system. The durations of this test is 4.5 seconds, and it can be initiated via the command \texttt{M300}. It sends a PWM signal to the actuators that varies over time. The output of the system is the linear position of the actuator at each time instant, as seen in Figure \ref{fig:io-signals}.
 
 
 \subsection{System Identification}
 
-Based on the obtained data, the system's transfer function is identified using MATLAB's \textit{System Identification Toolbox}. The process carried out is shown in Figure \ref{fig:tf-indent-process}. The model fit to the real data is depicted in Figure \ref{fig:tf-result}. The MATLAB code used is provided in Appendix \ref{apx:pid-code}.
+The system's transfer function is identified based on the obtained data using MATLAB's \textit{System Identification Toolbox}. The process carried out is shown in Figure \ref{fig:tf-indent-process}. The model fit to the real data is depicted in Figure \ref{fig:tf-result}. The MATLAB code utilized is provided in Appendix \ref{apx:pid-code}.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{tf-ident-process}
+    \includegraphics[width=0.65\textwidth]{tf-ident-process}
     \caption{Transfer function identification in MATLAB}
     \label{fig:tf-indent-process}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{tf-ident-result}
+    \includegraphics[width=0.65\textwidth]{tf-ident-result}
     \caption{Transfer function model in MATLAB}
     \label{fig:tf-result}
 \end{figure}
@@ -236,7 +240,7 @@ The transfer equation of the linear actuator that was identified is shown in Equ
 
 \subsection{PID Tuning}
 
-The tunings of the PID controller were determined using the \textit{pidTuner} utility from MATLAB. The type of controller that provided the best response was the PI controller, which is a PID controller with \( K_d = 0 \). In our case, this control is discrete, and the resulting constants are shown in Table \ref{tab:pid-tunings}. These variables are specified in the controller of the \textit{QuickPID} library in Arduino.
+The tunings of the PID controller were determined using the MATLAB utility \textit{pidTuner}. The PI controller, which is a PID controller with $K_d = 0$, exhibited the most optimal response. In this instance, the control is discrete, and the resulting constants are presented in Table \ref{tab:pid-tunings}. These variables are utilized to implement the controller with the \textit{QuickPID} library in Arduino.
 
 \begin{equation}
     \label{eq:pid-equation}
@@ -265,7 +269,7 @@ The tunings of the PID controller were determined using the \textit{pidTuner} ut
     \label{fig:system-blocks}
 \end{figure}
 
-A general block diagram of the control system is shown in Figure \ref{fig:system-blocks}, where \texttt{C} represents the transfer function of the PID controller (equation \ref{eq:pid-equation}) and \texttt{tf1} represents the transfer function of the actuator. The system's response to a 100 mm input is shown in Figure \ref{fig:system-response}. The blue curve indicates that the system responds quickly, taking just under two seconds theoretically to reach the desired value; however, it exhibits overshoot and takes nearly four seconds to settle into a steady state. Often, when the robot is in motion, it is unnecessary to wait for it to reach exact intermediate positions. Therefore, the firmware was programmed to allow new commands to be entered once the desired position is passed, sacrificing accuracy for speed.
+A general block diagram of the control system is shown in Figure \ref{fig:system-blocks}, where \texttt{C} represents the transfer function of the PID controller (equation \ref{eq:pid-equation}) and \texttt{tf1} represents the transfer function of the actuator. The system's response to a 100 mm input is shown in Figure \ref{fig:system-response}. The blue curve indicates that the system responds promptly, reaching the desired value in approximately two seconds, theoretically. However, it exhibits overshoot and takes nearly four seconds to settle into a steady state. In many cases, it is not necessary for the robot to reach exact intermediate positions when it is in motion. Consequently, the firmware was programmed to permit the input of new commands once the desired position has been reached, thus compromising accuracy for speed.
 
 \begin{figure}[H]
     \centering
@@ -274,4 +278,4 @@ A general block diagram of the control system is shown in Figure \ref{fig:system
     \label{fig:system-response}
 \end{figure}
 
-Additionally, the control signal, shown in yellow, experiences saturation, highlighting the need to implement an anti-windup control. Fortunately, the \textit{QuickPID} library offers a function for this, making implementation straightforward.
+Moreover, the control signal, depicted in yellow, exhibits saturation, underscoring the necessity to implement an anti-windup control. Fortunately, the \textit{QuickPID} library offers a function for this, rendering implementation straightforward. This feature was duly applied.

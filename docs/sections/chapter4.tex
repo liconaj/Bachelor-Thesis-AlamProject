@@ -1,14 +1,13 @@
-The assembly of the structure involves the integration of the array of all actuators, the platform on which they are mounted, and the electronics responsible for controlling the linear actuators. The components of the platform are shown in Figure \ref{fig:platform-assembly}, and the corresponding parts list is detailed in Table \ref{tab:platform-assembly}. The structure features a hexagonal shape but includes only three lateral structural supports, made of acrylic, as well as the upper and lower bases, which are also made of acrylic. These components are connected using 3D-printed L-shaped joints. There is a hollow space beneath the actuators to provide clearance for the rods, approximately 25 centimeters in length.
+The assembly of the structure involves the integration of the array of all the actuators, the platform on which they are mounted, and the electronics responsible for controlling the linear actuators. The components of the platform are illustrated in Figure \ref{fig:platform-assembly}, and the corresponding parts list is provided in Table \ref{tab:platform-assembly}. The structure features a hexagonal in a shape, with includes only three lateral structural supports, made of acrylic, and the upper and lower bases, also made of acrylic. The aforementioned components are connected using 3D printed L-shaped joints. A void is present beneath the actuators, with dimensions to approximately 25 cm, to accommodate the rods.
 
 
-\begin{figure}
+\begin{figure}[!hbt]
     \centering
     \includegraphics[width=0.7\textwidth]{platform-assembly}
     \caption{Platform assembly exploded-view}
     \label{fig:platform-assembly}
 \end{figure}
-
-\begin{table}[]
+\begin{table}[!hbt]
     \centering
     \caption{Platform assembly parts list}
     \label{tab:platform-assembly}
@@ -32,11 +31,11 @@ The assembly of the structure involves the integration of the array of all actua
 
 \section{Electronics Case}
 
-The electronics case houses all the electronic components necessary to control the motors. It is an independent module from the platform structure, making it easy to remove and replace, and it is positioned beside the platform for easy access. The case contains the MCU (Microcontroller Unit), the breadboard on which the motor drivers and various connections are made, as well as the input and output peripherals of the module, which can be seen in Figure \ref{fig:electronics-assembly} and are listed in Table \ref{tab:electronics-assembly}. The case consists of two main parts, one containing the MCU and the other housing the breadboard, both of which are 3D-printed. The peripherals are mounted on the walls, which are made of laser-cut acrylic sheets.
+The electronics case contains all the electronic components that are necessary for the control of the motors. The module is an independent component that can be removed and replaced without disturbing the platform structure. It is conveniently positioned next to the platform for easy access. The case contains the microcontroller unit (MCU), the breadboard on which the motor drivers and various connections are made, as well as the input and output peripherals of the module. These can be seen in Figure \ref{fig:electronics-assembly} and are listed in Table \ref{tab:electronics-assembly}. The housing is 3D printed and consists of two main parts: one containing the MCU and the other containing the breadboard. The peripherals are affixed to the walls, which are constructed from laser-cut acrylic sheets.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{electronics-assembly}
+    \includegraphics[width=0.9\textwidth]{electronics-assembly}
     \caption{Electronics assembly exploded-view}
     \label{fig:electronics-assembly}
 \end{figure}
@@ -67,7 +66,7 @@ The electronics case houses all the electronic components necessary to control t
     \end{tabular}
 \end{table}
 
-Figure \ref{fig:electronics-ports} shows the ports and connections of the case: on the bottom, there is the serial port input for programming the MCU and sending commands, and the power plug; on the right side, there is an emergency button to stop the robot, and a 5-pin connector input for connecting a joystick; on the left side, there is the power button; and on the top, there are a pair of 20-pin IDC inputs for connecting the unit to the motors.
+Figure \ref{fig:electronics-ports} illustrates the ports and connections of the case. The lower section comprises a serial port for programming the MCU and sending commands, as well as a power plug. The right side features an emergency button to prevent the robot from  moving, and a 5-pin connector input for connecting a joystick. The left side houses the power button, while the upper section includes a pair of 20-pin IDC inputs for connecting the unit to the motors.
 
 \begin{figure}
     \centering
@@ -77,7 +76,9 @@ Figure \ref{fig:electronics-ports} shows the ports and connections of the case: 
 \end{figure}
 
 \subsection{Circuit Schematic}
-The schematic of the circuit connections is illustrated in Figure \ref{fig:main-circuit}. As shown in Figure \ref{fig:motor-circuit}, each actuator motor requires six connections. The pins \texttt{M1} and \texttt{M2} supply power to the motors, while \texttt{VCC} and \texttt{GND} provide power to the magnetic encoder. The pins \texttt{A} and \texttt{B} are used for quadrature output. To accurately count the encoder pulses in both directions, one pin must be connected to an interrupt pin and the other to a digital pin. Motor polarity and speed are managed using a \texttt{DRV8833} motor driver, which requires two \texttt{PWM} connections per motor. Given the need for a cost-effective MCU with sufficient pins to connect six motors, the \texttt{Arduino MEGA 2650} was selected for this project.
+The schematic of the circuit connections is illustrated in Figure \ref{fig:main-circuit}. As shown in Figure \ref{fig:motor-circuit}, each actuator motor necessitates six connections. The pins designated as \texttt{M1} and \texttt{M2} are responsible for supplying power to the motors, while the pins designated as \texttt{VCC} and \texttt{GND} provide power to the magnetic encoder. The pins \texttt{A} and \texttt{B} are utilized for quadrature output.
+
+In order to accurately count the encoder pulses in both directions, it is necessary to connect one pin to an interrupt pin and the other to a digital pin. The motor driver, designated as \texttt{DRV8833}, is employed to regulate the polarity and speed of the motors. This device necessitates two PWM connections for each motor. In view of the necessity for a cost-effective MCU with an adequate number of pins to connect six motors, the \texttt{Arduino MEGA 2650} was selected for this project.
 
 \begin{figure}
     \centering

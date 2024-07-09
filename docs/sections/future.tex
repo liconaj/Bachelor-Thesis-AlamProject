@@ -1,9 +1,9 @@
 \begin{itemize}
-    \item Develop a PCB for the electronics to mitigate potential issues and eliminate current problems. Currently, connecting IDC 2 with the power off causes the motor drivers to draw power from the Arduino, posing a risk of MCU and computer damage. The root cause of this issue remains elusive.
+    \item Develop a PCB for the electronics to mitigate potential issues and eliminate current problems. Currently, connecting IDC 2 with the power off results in the motor drivers drawing power from the Arduino, which poses a risk of damage to the MCU and the computer. The underlying cause of this issue remains elusive.
     
-    \item When establishing serial communication with Arduino, the LED linked to pin \texttt{D13} blinks twice, necessitating the power of the motors to be off or another PWM pin to be utilized when connecting the module.
+    \item When establishing serial communication with the Arduino, the LED linked to pin \texttt{D13} blinks twice. This indicates that the power to the motors must be off or that another PWM pin must be utilized when connecting the module.
     
-    \item Implement joystick functionality for direct control. This feature was intended to facilitate simultaneous adjustment of all actuators, aiding in rod insertion and removal.
+    \item It is recommended that the joystick functionality be implemented for direct control. The objective of this feature was to facilitate the simultaneous adjustment of all actuators, which would in turn assist with the insertion and removal of rods.
     
     \item Complete the implementation of missing command functionalities in the control language.
     

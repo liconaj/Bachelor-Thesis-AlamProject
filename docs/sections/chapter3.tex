@@ -1,4 +1,4 @@
-Actuators play a crucial role in the operation of robots by converting the rotational movement of a motor into linear motion, enabling the robot to perform various tasks. In the context of parallel robots, linear actuators are particularly important because they are responsible for the movements needed to control the robot's motion.
+Actuators play a pivotal role in the operation of parallel robots, converting the rotational movement of a motor into linear motion, thus enabling the robot to perform a multitude of tasks. In the context of parallel robots, linear actuators are of particular significance, as they are responsible for the movements needed to control the robot's motion.
 
 \begin{figure}[H]
     \centering
@@ -7,11 +7,11 @@ Actuators play a crucial role in the operation of robots by converting the rotat
     \label{fig:linear-motion-systems}
 \end{figure}
 
-In parallel robots, linear actuators are used to manipulate the position and orientation of the end-effector. Traditional linear actuators include timing belts, rack and pinion systems, ball screws, and linear motors, as shown in Figure \ref{fig:linear-motion-systems}. However, these actuators often present challenges such as high cost, large size, and fixed or non-modifiable maximum stroke lengths.
+In parallel robots, linear actuators are used to manipulate the position and orientation of the end-effector. The traditional linear actuators include timing belts, rack and pinion systems, ball screws, and linear motors, as shown in Figure \ref{fig:linear-motion-systems}. However, these actuators often present challenges such as high cost, large size, and fixed or non-modifiable maximum stroke lengths.
 
-The fixed or non-modifiable travel distance of conventional linear actuators is a major limitation, especially when the goal is to create a flexible platform capable of accommodating a wide range of rod-driven robot configurations. Flexibility is key to our platform, as it must adapt to various setups without requiring significant modifications.
+The fixed or non-modifiable travel distance of conventional linear actuators represents a major limitation, particularly when the objective is to develop a flexible platform capable of accommodating a wide range of rod-driven robot configurations. Flexibility is a crucial requirement for our platform, as it must be capable of adapting to various setups without requiring significant modifications.
 
-Fortunately, parallel continuum robots open up a broader range of possibilities. Unlike traditional robots that move rigid elements, continuum robots use flexible elements like rods, which can be shortened or extended to achieve the desired motion. This concept is similar to the operation of 3D printer extruders (refer to Figure \ref{fig:extruder}).
+Fortunately, parallel continuum robots offer a broader range of possibilities. In contrast to traditional robots that utilize rigid components, continuum robots employ flexible elements such as rods, which can be shortened or extended to achieve the desired motion. This principle bears resemblance is similar to the operation of 3D printer extruders (see Figure \ref{fig:extruder}).
 
 \begin{figure}[H]
     \centering
@@ -29,7 +29,7 @@ Fortunately, parallel continuum robots open up a broader range of possibilities.
     \label{fig:extruder}
 \end{figure}
 
-3D printer extruders work by using a drive gear and a bearing to push and pull the filament towards the heater. For our application, we are not interested in the heating aspect but rather the mechanism that drives the filament. This mechanism can be adapted to move rods in our robot, as shown in Figure \ref{fig:extruder-wo-heater}.
+The operation of a 3D printer extruder is based in the use of a drive gear and a bearing to push and pull the filament towards the heater. In our application, we are not a priori interested in the heating aspect, but rather in the mechanism that drives the filament. This mechanism can be adapted to move rods in our robot, as shown in Figure \ref{fig:extruder-wo-heater}.
 
 \begin{figure}[H]
     \centering
@@ -38,7 +38,7 @@ Fortunately, parallel continuum robots open up a broader range of possibilities.
     \label{fig:extruder-wo-heater}
 \end{figure}
 
-A custom design is necessary for several reasons. The filaments used in standard extruders are thicker than the rods suitable for our robots ($>1.75$ mm), as empirical experience suggests that rods thinner than 1.5 mm are ideal. Thicker rods require more force to bend, which these actuators are not designed to handle, making this thickness a practical upper limit for our application. Additionally, the width of the actuators must be considered, along with their weight and speed. Energy consumption is also a critical factor that must be taken into account.
+The necessity of a custom design is based on a number of factors. The filaments utilized in standard extruders are thicker than the rods suitable for our robots ($>1.75$ mm), as empirical evidence suggests that rods thinner than 1.5 mm are optimal. Thicker rods necessitate greater force to bend, which these actuators are not designed to handle, making this thickness a practical upper limit for our application. Furthermore, the width of the actuators must be considered, along with their weight and speed.
 
 \begin{figure}[H]
     \centering
@@ -47,7 +47,7 @@ A custom design is necessary for several reasons. The filaments used in standard
     \label{fig:actuators-arrange}
 \end{figure}
 
-Each rod requires its own actuator. Therefore, the actuators must fit within the stipulated diameter for the base of the arm. The top view of an actuator arrangement is shown in Figure \ref{fig:actuators-arrange}. For an arrangement of six actuators with width $W$ and distance to the center $c$, the relationship with the minimum base radius $R_{min}$ is shown in equations \ref{eq:w-rmin} and \ref{eq:r-rmin}. An original extruder has a width of $W=5.2$ cm with $c=0.7$ cm, which requires a minimum radius of $R_{min}=5.2$ cm according to equation \ref{eq:rmin}. This is larger than the model presented by \cite{wu2022}, and our aim is to design a smaller one. Therefore, we establish a minimum diameter of $R_{min}=3.5$ cm with a maximum $c=0.5$ cm, resulting in a maximum width of $W\approx3.5$ cm, according to equation \ref{eq:w-complete}.
+It is required that each rod be equipped with its own actuator. Consequently, the actuators must be of a size that is compatible with the specified diameter for the base of the robot. The top view of an actuator arrangement is depicted in Figure \ref{fig:actuators-arrange}. For an arrangement of six actuators with width $W$ and distance to the center $c$, the relationship with the minimum base radius $R_{min}$ is shown in equations \ref{eq:w-rmin} and \ref{eq:r-rmin}. An original extruder has a width of $W=5.2$ cm with $c=0.7$ cm, which requires a minimum radius of $R_{min}=5.2$ cm according to equation \ref{eq:rmin}. This value is larger than the presented in the model by Wu and Shi \cite{wu2022}, and the aim is to design a smaller one. Accordingly, a minimum diameter of $R_{min}=3.5$ cm with a maximum $c=0.5$ cm was established, resulting in a maximum width of $W\approx3.5$ cm, as per equation \ref{eq:w-complete}.
 
 
 \begin{align}
@@ -64,7 +64,7 @@ Each rod requires its own actuator. Therefore, the actuators must fit within the
 
 \section{Motor}
 
-The motor is the central component in actuators, and in extruders, stepper motors are commonly used. However, stepper motors were discarded for our application due to their size and speed limitations. Instead, we selected DC N20 geared motors, which are small and fast enough to meet our requirements. To control the number of revolutions accurately, a motor with an encoder is necessary (see Figure \ref{fig:n20-encoder}). The dimensions of the selected motor with encoder are specified in Figure \ref{fig:n20-encoder-dimensions}, and the specifications for the chosen variant are detailed in Table \ref{tab:motor-specs}.
+The motor is the central component in actuators, and in extruders, stepper motors are commonly utilized. However, stepper motors were deemed unsuitable for our application due to their size and speed limitations. In this instance, the DC N20 geared motors were selected as they are small and fast enough to meet the requirements. To ensure accurate control of the number of revolutions, it is necessary to employ a motor with an encoder (see Figure \ref{fig:n20-encoder}). The dimensions of the selected motor with encoder are specified in Figure \ref{fig:n20-encoder-dimensions}, and the specifications for the chosen variant are detailed in Table \ref{tab:motor-specs}.
 
 \begin{figure}[H]
     \centering
@@ -105,16 +105,16 @@ The motor is the central component in actuators, and in extruders, stepper motor
 
 \section{First model}
 
-A first concept of the linear actuator is shown in Figure \ref{fig:first-isometric-view}. This simple and straightforward model was designed to understand the basic concept of a linear actuator. The idea was to make it easy to manufacture using FDM (fused deposition modeling), specifically 3D printing. The width of this model is 46.06 mm (as shown in Figure \ref{fig:first-model-dimensions}), which exceeds the previously stipulated $~35$ mm. We found limitations when trying to reduce the actuator's width due to the diameters of the pulley, bearing, spring, and the length of the arm. Additionally, the bearing did not provide sufficient friction, necessitating improvements in this area. Enhancements were also needed for the motor grip and support to ensure ease of printing and overall functionality.
+The initial concept of the linear actuator is illustrated in Figure \ref{fig:first-isometric-view}. This elementary and uncomplicated model was designed to comprehend the fundamental concept of this actuator. The objective was to facilitate the manufacturing process through the use of FDM (fused deposition modeling), specifically 3D printing. The width of this model is 46.06 mm, exceeding the previously stipulated $~35$ mm. This is shown in Figure \ref{fig:first-model-dimensions}. When attempting to reduce the width of the actuator, limitations were encountered, due to the diameters of the pulley, bearing, spring, and the length of the arm. Additionally, the bearing did not provide sufficient friction, necessitating improvements in this area. Enhancements were also needed for the motor grip and support to ensure ease of printing and overall functionality.
 
 \begin{figure}[H]
     \centering
-    \begin{subfigure}[b]{0.4\textwidth}
+    \begin{subfigure}[b]{0.3\textwidth}
         \includegraphics[width=\textwidth]{first-isometric-view-frontal}
         \caption{Front isometric view}
         \label{fig:first-front-isometric-view}
     \end{subfigure}
-    \begin{subfigure}[b]{0.4\textwidth}
+    \begin{subfigure}[b]{0.3\textwidth}
         \includegraphics[width=\textwidth]{first-isometric-view-backwards}
         \caption{Back isometric view}
         \label{fig:first-back-isometric-view}
@@ -141,16 +141,18 @@ A first concept of the linear actuator is shown in Figure \ref{fig:first-isometr
 
 \section{Final model}
 
-After some iterations, the final model was developed, as shown in Figure \ref{fig:final-isometric-view}. The final design is more rounded to eliminate potential stress concentrators, and it is also more streamlined and material-efficient, incorporating holes in non-critical areas to reduce weight.
+Following a series of iterations, the final model was developed and is depicted in Figure \ref{fig:final-isometric-view}. The final design is more rounded in order to eliminate potential stress concentrators. Moreover, it is also more streamlined and material-efficient, incorporating holes in non-critical areas to reduce material needed in 3D printing.
 
-\begin{figure}[H]
+The viability of manufacturing through this method was a significant factor in the design process. Given our access to 3D printers, this method was the most convenient and expedient solution. The design is conductive to printing when oriented with the front view facing up on the base. This configuration allows for the nearly complete stacking of the print layers, eliminating the need for support structures. Furthermore, the printing time for the piece is relatively brief, rendering is an optimal choice for rapid prototyping and production.
+
+\begin{figure}
     \centering
-    \begin{subfigure}[b]{0.4\textwidth}
+    \begin{subfigure}[b]{0.3\textwidth}
         \includegraphics[width=\textwidth]{final-isometric-view-front}
         \caption{Front isometric view}
         \label{fig:final-front-isometric-view}
     \end{subfigure}
-    \begin{subfigure}[b]{0.4\textwidth}
+    \begin{subfigure}[b]{0.3\textwidth}
         \includegraphics[width=\textwidth]{final-isometric-view-back}
         \caption{Back isometric view}
         \label{fig:final-back-isometric-view}
@@ -159,7 +161,7 @@ After some iterations, the final model was developed, as shown in Figure \ref{fi
     \label{fig:final-isometric-view}
 \end{figure}
 
-Although the width remains the same, the arm, which previously collided with other actuators in an array, has been repositioned. It is now slightly shorter and rounded, as shown in Figure \ref{fig:final-model-dimensions}, allowing the arm to intrude into the space of another actuator without making contact at any point. This design maintains an array of 6 actuators within the established circle diameter of 7 cm.
+Although the width remains unchanged, the arm, which previously collided with other actuators in an array, has been repositioned. The arm is now slightly shorter and rounded, as shown in Figure \ref{fig:final-model-dimensions}. This configuration allows the arm to intrude into the space of another actuator without making contact at any point. The design maintains an array of six actuators within the established circle diameter of 7 cm.
 
 \begin{figure}[H]
     \centering
@@ -177,9 +179,9 @@ Although the width remains the same, the arm, which previously collided with oth
     \label{fig:final-model-dimensions}
 \end{figure}
 
-The issue of friction was also addressed by adding an O-ring seal in a V-shaped bearing and creating a grooved pattern on the motor pulley. The space between the pulley was made narrower to enhance grip. Additionally, a pair of new components were designed to secure the motor, and an additional support was included over the arm and bearing for increased rigidity and safety. Critical parts such as the spring holder were reinforced, making them thicker to improve durability and performance.
+The issue of friction was also addressed by the addition an O-ring seal in a V-shaped bearing and the creation a grooved pattern on the motor pulley. The distance between the pulleys was reduced in order to improve grip. Additionally, a pair of new components was designed to secure the motor, and an additional support was included over the arm and bearing for enhanced rigidity and safety. Critical components such as the spring holder were reinforced, through the addition of material, resulting in a thicker structure.
 
-Figure \ref{fig:final-actuator-explode} presents an exploded view of the final actuator, detailing each component with arrows and item numbers in balloons. The corresponding part names for the assembly are listed in Table \ref{tab:final-actuator-parts}, which also indicates the quantity and source of each part. The sources are categorized as 3D printed, commercial, or manufactured. Notably, the only "manufactured" part is the spring, which was custom-made.
+Figure \ref{fig:final-actuator-explode} presents an exploded view of the final actuator, with each component labeled with arrows and item numbers in balloons. The corresponding part names for the assembled components are provided in Table \ref{tab:final-actuator-parts}, which also indicates the quantity and source of each part. The sources are classified as 3D printed, commercial, or manufactured. It is noteworthy that the only "manufactured" part is the spring, which was custom-made.
 
 \begin{figure}[H]
     \centering
@@ -224,7 +226,7 @@ Figure \ref{fig:final-actuator-explode} presents an exploded view of the final a
     \label{fig:forces-arm}
 \end{figure}
 
-The pressure or grip on the rod by the actuator is provided by the bearing and the actuator arm, whose static model is shown in Figure \ref{fig:forces-arm}. The sum of forces is found in Equation \ref{eq:sum-forces}, and the sum of moments at point $O$ is given in Equation \ref{eq:sum-momentums}. The force $P$ is exerted by the spring, as described by Equation \ref{eq:force-p}, where $k$ is the spring constant and $\Delta y$ is the compression. At the pin $O$, the components of the reaction force, $R_x$ and $R_y$, are present. From Equation \ref{eq:sum-momentums}, we can determine the reaction force $F_B$ at the bearing, as shown in Equation \ref{eq:force-fb}.
+The pressure or grip on the rod by the actuator is provided by the bearing and the actuator arm. The static model of the actuator arm is shown in Figure \ref{fig:forces-arm}. The sum of forces is found in Equation \ref{eq:sum-forces}, and the sum of moments at point $O$ is given in Equation \ref{eq:sum-momentums}. The force $P$ is exerted by the spring, as described by Equation \ref{eq:force-p}, where $k$ is the spring constant and $\Delta y$ is the compression. At the pin $O$, the components of the reaction force, $R_x$ and $R_y$, are present. From Equation \ref{eq:sum-momentums}, the reaction force $F_B$ at the bearing can be determined, as shown in Equation \ref{eq:force-fb}.
 
 \begin{align}
     \label{eq:sum-forces}
@@ -248,7 +250,7 @@ The pressure or grip on the rod by the actuator is provided by the bearing and t
     \label{fig:friction-force}
 \end{figure}
 
-From the force $F_B$, the friction force on the rod can be calculated, as shown in Figure \ref{fig:friction-force}, using Equation \ref{eq:force-fr}. However, these formulas were not applied in depth because static friction factors of the robot $\mu_s$ were measured instead. Geometric constraints were of greater importance. Therefore, the spring was selected by empirically testing those with the appropriate stiffness. The drive pulley, with radius $R$, rotates at speed $\omega$. Considering the motor's RPM, the actuator's speed specifications are provided in Table \ref{tab:actuator-specs}.
+The force of friction on the rod can be calculated from the force $F_B$, as illustrated in Figure \ref{fig:friction-force} and demonstrated by Equation \ref{eq:force-fr}. However, these formulas were not subjected to a comprehensive analysis because because the static friction factor, represented by the symbol $\mu_s$, were not measured. Instead, geometric constraints were of greater importance. Therefore, the spring was selected by empirically testing those with the appropriate stiffness. The drive pulley, with radius $R$, rotates at speed of $\omega$. Considering the motor's RPM, the actuator's speed specifications are provided in Table \ref{tab:actuator-specs}.
 
 \begin{equation}
     \label{eq:force-fbp}
